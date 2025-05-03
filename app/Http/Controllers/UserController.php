@@ -4,16 +4,22 @@ namespace App\Http\Controllers;
 
 use App\Models\TransactionDetail;
 use Illuminate\Http\Request;
+use App\Http\Requests\ProfileUpdateRequest;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\View\View;
 
-class TransactionDetailController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $TransactionDetails = TransactionDetail::all();
-        return view('transactiondetail', compact('TransactionDetails'));
+        $users = user::all();
+    //     return $court;
+        return view('dashboard', compact('users'));
     }
 
     /**
@@ -35,7 +41,7 @@ class TransactionDetailController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(TransactionDetail $transactionDetail)
+    public function show(string $id)
     {
         //
     }
@@ -43,7 +49,7 @@ class TransactionDetailController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(TransactionDetail $transactionDetail)
+    public function edit(string $id)
     {
         //
     }
@@ -51,7 +57,7 @@ class TransactionDetailController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, TransactionDetail $transactionDetail)
+    public function update(Request $request, string $id)
     {
         //
     }
@@ -59,7 +65,7 @@ class TransactionDetailController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(TransactionDetail $transactionDetail)
+    public function destroy(string $id)
     {
         //
     }

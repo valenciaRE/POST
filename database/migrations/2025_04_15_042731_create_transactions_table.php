@@ -13,7 +13,11 @@ return new class extends Migration
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->date('date');
+            $table->integer('total');
+            $table->integer('pay_total');
         });
     }
 
@@ -24,4 +28,4 @@ return new class extends Migration
     {
         Schema::dropIfExists('transactions');
     }
-};
+}; 

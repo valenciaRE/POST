@@ -13,7 +13,11 @@ return new class extends Migration
     {
         Schema::create('transaction_details', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->unsignedBigInteger('transaction_id');
+            $table->foreign('transaction_id')->references('id')->on('transactions');
+            $table->integer('item_id');
+            $table->integer('qty');
+            $table->integer('subtotal');
         });
     }
 
